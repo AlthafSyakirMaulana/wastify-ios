@@ -83,7 +83,7 @@ const KeuanganScreen: React.FC = () => {
                 <View
                   style={[
                     styles.barFill,
-                    {width: pct as string, backgroundColor: item === 'Laba' ? '#059669' : '#6ee7b7'},
+                    {width: pct as any, backgroundColor: item === 'Laba' ? '#059669' : '#6ee7b7'},
                   ]}
                 />
               </View>
