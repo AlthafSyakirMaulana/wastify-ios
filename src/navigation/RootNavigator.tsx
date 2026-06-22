@@ -12,6 +12,15 @@ import PasarScreen from '../screens/PasarScreen';
 import KeuanganScreen from '../screens/KeuanganScreen';
 import BmcScreen from '../screens/BmcScreen';
 import KontakScreen from '../screens/KontakScreen';
+import MonitoringScreen from '../screens/MonitoringScreen';
+import LegalScreen from '../screens/LegalScreen';
+import AnalyticalScreen from '../screens/AnalyticalScreen';
+import HistoricalScreen from '../screens/HistoricalScreen';
+import TrackingScreen from '../screens/TrackingScreen';
+import SchedulingScreen from '../screens/SchedulingScreen';
+import InvoicingScreen from '../screens/InvoicingScreen';
+import AnalyticsScreen from '../screens/AnalyticsScreen';
+import HelpdeskScreen from '../screens/HelpdeskScreen';
 
 export type RootStackParamList = {
   MainTabs: undefined;
@@ -22,6 +31,15 @@ export type RootStackParamList = {
   Keuangan: undefined;
   Bmc: undefined;
   Kontak: undefined;
+  Monitoring: undefined;
+  Legal: undefined;
+  Analytical: undefined;
+  Historical: undefined;
+  Tracking: undefined;
+  Scheduling: undefined;
+  Invoicing: undefined;
+  Analytics: undefined;
+  Helpdesk: undefined;
 };
 
 export type TabParamList = {
@@ -92,6 +110,15 @@ const RootNavigator: React.FC = () => {
       <Stack.Screen name="Keuangan" component={KeuanganScreen} />
       <Stack.Screen name="Bmc" component={BmcScreen} />
       <Stack.Screen name="Kontak" component={KontakScreen} />
+      <Stack.Screen name="Monitoring" component={MonitoringScreen} />
+      <Stack.Screen name="Legal" component={LegalScreen} />
+      <Stack.Screen name="Analytical" component={AnalyticalScreen} />
+      <Stack.Screen name="Historical" component={HistoricalScreen} />
+      <Stack.Screen name="Tracking" component={TrackingScreen} />
+      <Stack.Screen name="Scheduling" component={SchedulingScreen} />
+      <Stack.Screen name="Invoicing" component={InvoicingScreen} />
+      <Stack.Screen name="Analytics" component={AnalyticsScreen} />
+      <Stack.Screen name="Helpdesk" component={HelpdeskScreen} />
     </Stack.Navigator>
   );
 };

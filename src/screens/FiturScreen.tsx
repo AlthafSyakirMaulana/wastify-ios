@@ -1,8 +1,16 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const features = [
+interface FeatureItem {
+  icon: string;
+  title: string;
+  desc: string;
+  benefits: string[];
+  screen: string;
+}
+
+const features: FeatureItem[] = [
   {
     icon: 'chart-box-outline',
     title: 'Waste Monitoring',
@@ -12,6 +20,7 @@ const features = [
       'Notifikasi otomatis saat kapasitas penuh',
       'Visualisasi data limbah harian, mingguan, bulanan',
     ],
+    screen: 'Monitoring',
   },
   {
     icon: 'file-check-outline',
@@ -22,6 +31,7 @@ const features = [
       'Sesuai regulasi KLHK terbaru',
       'Arsip dokumen kepatuhan hukum',
     ],
+    screen: 'Legal',
   },
   {
     icon: 'chip',
@@ -32,6 +42,7 @@ const features = [
       'Optimasi jadwal penjemputan',
       'Rekomendasi pengurangan limbah',
     ],
+    screen: 'Analytical',
   },
   {
     icon: 'history',
@@ -42,10 +53,70 @@ const features = [
       'Laporan kepatuhan siap cetak',
       'Audit trail transparan',
     ],
+    screen: 'Historical',
+  },
+  {
+    icon: 'truck',
+    title: 'Status Tracking',
+    desc: 'Pantau status pengelolaan limbah Anda secara real-time dari penjemputan hingga selesai diproses.',
+    benefits: [
+      'Tracking real-time',
+      'Notifikasi status terbaru',
+      'Riwayat perjalanan lengkap',
+    ],
+    screen: 'Tracking',
+  },
+  {
+    icon: 'calendar-clock',
+    title: 'Penjadwalan',
+    desc: 'Atur dan kelola jadwal penjemputan limbah dengan kalender interaktif yang mudah digunakan.',
+    benefits: [
+      'Kalender interaktif',
+      'Penjadwalan otomatis',
+      'Pengingat jadwal',
+    ],
+    screen: 'Scheduling',
+  },
+  {
+    icon: 'file-invoice-outline',
+    title: 'Digital Invoicing',
+    desc: 'Kelola dan unduh faktur layanan pengelolaan limbah secara digital dan terintegrasi.',
+    benefits: [
+      'Faktur digital otomatis',
+      'Riwayat pembayaran',
+      'Export laporan keuangan',
+    ],
+    screen: 'Invoicing',
+  },
+  {
+    icon: 'chart-line',
+    title: 'Analytics Report',
+    desc: 'Laporan dan analisis pengelolaan limbah dengan visualisasi data yang informatif.',
+    benefits: [
+      'Dashboard analitik',
+      'Visualisasi data interaktif',
+      'Export laporan',
+    ],
+    screen: 'Analytics',
+  },
+  {
+    icon: 'headset',
+    title: 'Help Desk',
+    desc: 'Pusat bantuan dan dukungan pelanggan untuk menyelesaikan berbagai permasalahan.',
+    benefits: [
+      'Tiket support terintegrasi',
+      'Live chat dengan tim support',
+      'FAQ dan panduan lengkap',
+    ],
+    screen: 'Helpdesk',
   },
 ];
 
-const FiturScreen: React.FC = () => {
+interface FiturScreenProps {
+  navigation: any;
+}
+
+const FiturScreen: React.FC<FiturScreenProps> = ({navigation}) => {
   return (
     <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent}>
       <View style={styles.header}>
@@ -58,9 +129,12 @@ const FiturScreen: React.FC = () => {
 
       <View style={styles.list}>
         {features.map((feature) => (
-          <View key={feature.title} style={styles.card}>
+          <TouchableOpacity
+            key={feature.title}
+            style={styles.card}
+            onPress={() => navigation.navigate(feature.screen)}>
             <View style={styles.iconBox}>
-              <Icon name={feature.icon} size={32} color="#059669" />
+              <Icon name={feature.icon as any} size={32} color="#059669" />
             </View>
             <Text style={styles.cardTitle}>{feature.title}</Text>
             <Text style={styles.cardDesc}>{feature.desc}</Text>
@@ -72,7 +146,10 @@ const FiturScreen: React.FC = () => {
                 </View>
               ))}
             </View>
-          </View>
+            <View style={styles.cardArrow}>
+              <Icon name="arrow-right" size={18} color="#059669" />
+            </View>
+          </TouchableOpacity>
         ))}
       </View>
     </ScrollView>
@@ -92,6 +169,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#a7f3d0',
     padding: 20,
+    marginBottom: 16,
   },
   iconBox: {
     width: 56,
@@ -107,6 +185,7 @@ const styles = StyleSheet.create({
   benefits: {gap: 8},
   benefitRow: {flexDirection: 'row', alignItems: 'center', gap: 8},
   benefitText: {fontSize: 13, color: '#4b5563'},
+  cardArrow: {alignItems: 'flex-end', marginTop: 12},
 });
 
 export default FiturScreen;

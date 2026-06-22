@@ -30,21 +30,55 @@ const features = [
     icon: 'chart-box-outline',
     title: 'Waste Monitoring',
     desc: 'Pantau volume limbah secara real-time melalui aplikasi mobile.',
+    screen: 'Monitoring',
   },
   {
     icon: 'file-check-outline',
     title: 'Legal Assistant',
     desc: 'Otomatisasi manifes digital limbah B3 sesuai regulasi KLHK.',
+    screen: 'Legal',
   },
   {
     icon: 'chip',
     title: 'Analytical Services',
     desc: 'Algoritma prediktif untuk mengoptimalkan jadwal penjemputan.',
+    screen: 'Analytical',
   },
   {
     icon: 'history',
     title: 'Historical Waste Mgmt',
     desc: 'Riwayat lengkap data pembuangan dan laporan kepatuhan.',
+    screen: 'Historical',
+  },
+  {
+    icon: 'truck',
+    title: 'Status Tracking',
+    desc: 'Pantau status pengelolaan limbah secara real-time.',
+    screen: 'Tracking',
+  },
+  {
+    icon: 'calendar-clock',
+    title: 'Penjadwalan',
+    desc: 'Atur jadwal penjemputan limbah dengan kalender interaktif.',
+    screen: 'Scheduling',
+  },
+  {
+    icon: 'file-invoice-outline',
+    title: 'Digital Invoicing',
+    desc: 'Kelola dan unduh faktur layanan pengelolaan limbah.',
+    screen: 'Invoicing',
+  },
+  {
+    icon: 'chart-line',
+    title: 'Analytics Report',
+    desc: 'Laporan dan analisis pengelolaan limbah yang informatif.',
+    screen: 'Analytics',
+  },
+  {
+    icon: 'headset',
+    title: 'Help Desk',
+    desc: 'Pusat bantuan dan dukungan pelanggan Wastify.',
+    screen: 'Helpdesk',
   },
 ];
 
@@ -94,7 +128,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
         <View style={styles.cardGrid}>
           {problems.map((item) => (
             <View key={item.title} style={styles.card}>
-              <Icon name={item.icon} size={28} color="#059669" />
+              <Icon name={item.icon as any} size={28} color="#059669" />
               <Text style={styles.cardTitle}>{item.title}</Text>
               <Text style={styles.cardDesc}>{item.desc}</Text>
             </View>
@@ -106,15 +140,19 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
         <Text style={styles.sectionTitle}>Fitur Utama Wastify</Text>
         <View style={styles.featureList}>
           {features.map((item) => (
-            <View key={item.title} style={styles.featureCard}>
+            <TouchableOpacity
+              key={item.title}
+              style={styles.featureCard}
+              onPress={() => navigation.navigate(item.screen)}>
               <View style={styles.featureIcon}>
-                <Icon name={item.icon} size={24} color="#059669" />
+                <Icon name={item.icon as any} size={24} color="#059669" />
               </View>
               <View style={styles.featureContent}>
                 <Text style={styles.featureTitle}>{item.title}</Text>
                 <Text style={styles.featureDesc}>{item.desc}</Text>
               </View>
-            </View>
+              <Icon name="chevron-right" size={20} color="#9ca3af" />
+            </TouchableOpacity>
           ))}
         </View>
       </View>
@@ -193,6 +231,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#a7f3d0',
     padding: 20,
+    alignItems: 'center',
   },
   featureIcon: {
     width: 48,

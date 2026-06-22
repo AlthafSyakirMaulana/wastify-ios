@@ -23,7 +23,7 @@ const KontakScreen: React.FC = () => {
           ].map((item) => (
             <View key={item.label} style={styles.contactRow}>
               <View style={styles.contactIcon}>
-                <Icon name={item.icon} size={20} color="#059669" />
+                <Icon name={item.icon as any} size={20} color="#059669" />
               </View>
               <View>
                 <Text style={styles.contactLabel}>{item.label}</Text>

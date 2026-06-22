@@ -93,7 +93,7 @@ const BmcScreen: React.FC = () => {
           <View
             key={item.title}
             style={[styles.card, {backgroundColor: item.bg, borderColor: item.border}]}>
-            <Icon name={item.icon} size={28} color={item.iconColor} />
+            <Icon name={item.icon as any} size={28} color={item.iconColor} />
             <Text style={styles.cardTitle}>{item.title}</Text>
             <Text style={styles.cardDesc}>{item.desc}</Text>
           </View>

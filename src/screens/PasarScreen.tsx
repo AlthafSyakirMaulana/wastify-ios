@@ -20,7 +20,7 @@ const PasarScreen: React.FC = () => {
           {icon: 'target', label: 'SOM', value: 'Rp3 M', desc: 'Jawa Timur dan Jabodetabek tahun pertama'},
         ].map((item) => (
           <View key={item.label} style={styles.marketCard}>
-            <Icon name={item.icon} size={36} color="#059669" />
+            <Icon name={item.icon as any} size={36} color="#059669" />
             <Text style={styles.marketLabel}>{item.label}</Text>
             <Text style={styles.marketValue}>{item.value}</Text>
             <Text style={styles.marketDesc}>{item.desc}</Text>
